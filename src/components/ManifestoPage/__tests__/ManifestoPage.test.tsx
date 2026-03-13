@@ -10,6 +10,7 @@ const mockData = {
     '반대 의견을 적극적으로 표시해라.',
   ],
   footer: '원칙은 언제든 업데이트 가능! 동의되지 않는다면 바꾸자.',
+  credits: ['콘티', '루멘', '라바'],
 }
 
 describe('ManifestoPage', () => {
