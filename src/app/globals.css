@@ -7,15 +7,14 @@
 }
 
 @font-face {
-  font-family: 'BaeminHannaPro';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206@1.0/BaeminHanna-Pro.woff2') format('woff2');
+  font-family: 'HannaPro';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
   font-weight: normal;
-  font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --font-baemin-hanna: 'BaeminHannaPro', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  --font-baemin-hanna: 'HannaPro', 'Apple SD Gothic Neo', sans-serif;
 }
 
 body {
