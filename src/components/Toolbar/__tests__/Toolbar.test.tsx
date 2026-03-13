@@ -31,11 +31,13 @@ describe('Toolbar', () => {
   it('Web Share API 미지원 시 공유 버튼 클릭으로 클립보드에 URL을 복사한다', async () => {
     Object.defineProperty(navigator, 'share', { value: undefined, configurable: true })
     const writeTextSpy = vi.spyOn(navigator.clipboard, 'writeText').mockResolvedValue(undefined)
+    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
     render(<Toolbar />)
     fireEvent.click(screen.getByRole('button', { name: /공유/ }))
     await vi.waitFor(() => {
       expect(writeTextSpy).toHaveBeenCalledWith(expect.stringContaining('pair-programming-manifesto'))
     })
     writeTextSpy.mockRestore()
+    alertSpy.mockRestore()
   })
 })

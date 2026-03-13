@@ -10,14 +10,18 @@ export default function Toolbar() {
   }
 
   const handleShare = async () => {
-    if (navigator.share) {
-      await navigator.share({
-        title: '우아한테크코스 8기 짝 프로그래밍 선언문',
-        url: SHARE_URL,
-      })
-    } else {
-      await navigator.clipboard.writeText(SHARE_URL)
-      alert('링크가 클립보드에 복사되었습니다!')
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: '우아한테크코스 8기 짝 프로그래밍 선언문',
+          url: SHARE_URL,
+        })
+      } else {
+        await navigator.clipboard.writeText(SHARE_URL)
+        alert('링크가 클립보드에 복사되었습니다!')
+      }
+    } catch {
+      // 사용자가 공유를 취소하거나 권한이 없는 경우 무시
     }
   }
 
