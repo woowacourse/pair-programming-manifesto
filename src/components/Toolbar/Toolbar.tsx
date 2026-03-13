@@ -30,6 +30,14 @@ export default function Toolbar() {
       <button className={styles.btn} onClick={handleShare} type="button">
         공유하기
       </button>
+      <a
+        className={styles.btn}
+        href="https://github.com/woowacourse/pair-programming-manifesto"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
     </div>
   )
 }

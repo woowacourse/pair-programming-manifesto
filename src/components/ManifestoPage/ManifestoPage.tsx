@@ -34,17 +34,7 @@ export default function ManifestoPage({ data }: Props) {
       <footer className={styles.footer}>
         <p>* {data.footer}</p>
         {data.credits.length > 0 && (
-          <p className={styles.credits}>
-            {'Made by '}
-            <a
-              href="https://github.com/woowacourse/pair-programming-manifesto"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.githubLink}
-            >
-              {data.credits.join('  ')}
-            </a>
-          </p>
+          <p className={styles.credits}>Made by {data.credits.join('  ')}</p>
         )}
       </footer>
     </main>
