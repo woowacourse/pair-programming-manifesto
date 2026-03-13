@@ -1,0 +1,39 @@
+.toolbar {
+  display: flex;
+  gap: 12px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 8px 18px;
+  border: 2px solid #222;
+  background: white;
+  font-family: var(--font-baemin-hanna), sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn:hover {
+  background: #f5f5f5;
+}
+
+.btnPrimary {
+  background: #222;
+  color: white;
+}
+
+.btnPrimary:hover {
+  background: #444;
+}
+
+@media print {
+  .toolbar {
+    display: none;
+  }
+}
