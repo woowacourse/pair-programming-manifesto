@@ -62,6 +62,13 @@
   color: #666;
 }
 
+.credits {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #999;
+  word-break: keep-all;
+}
+
 @media print {
   .page {
     width: 100%;

@@ -3,6 +3,7 @@ export interface ManifestoData {
   subtitle: string
   principles: string[]
   footer: string
+  credits: string[]
 }
 
 export function parsePrinciples(content: string): ManifestoData {
@@ -12,12 +13,27 @@ export function parsePrinciples(content: string): ManifestoData {
   let subtitle = ''
   const principles: string[] = []
   let footer = ''
+  let credits: string[] = []
 
   let subtitleLines: string[] = []
   let inSubtitle = false
   let subtitleDone = false
+  let inCredits = false
 
   for (const line of lines) {
+    // --- 구분자 → credits 섹션 시작
+    if (line.trim() === '---') {
+      inCredits = true
+      continue
+    }
+
+    // credits 섹션: 공백으로 구분된 닉네임 수집
+    if (inCredits) {
+      const names = line.trim().split(/\s+/).filter(Boolean)
+      credits = credits.concat(names)
+      continue
+    }
+
     // H1 → title
     if (!title && line.startsWith('# ')) {
       title = line.slice(2).trim()
@@ -65,5 +81,5 @@ export function parsePrinciples(content: string): ManifestoData {
     subtitle = subtitleLines.join('\n')
   }
 
-  return { title, subtitle, principles, footer }
+  return { title, subtitle, principles, footer, credits }
 }

@@ -33,6 +33,9 @@ export default function ManifestoPage({ data }: Props) {
       <Toolbar />
       <footer className={styles.footer}>
         <p>* {data.footer}</p>
+        {data.credits.length > 0 && (
+          <p className={styles.credits}>Made by {data.credits.join('  ')}</p>
+        )}
       </footer>
     </main>
   )

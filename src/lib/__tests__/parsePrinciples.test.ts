@@ -11,6 +11,10 @@ const sampleMd = `# 짝 프로그래밍 선언문
 3. 혼자 고민하고 결정하지 말아라.
 
 > * 원칙은 언제든 업데이트 가능! 동의되지 않는다면 바꾸자.
+
+---
+
+콘티 루멘 라바
 `
 
 describe('parsePrinciples', () => {
@@ -40,6 +44,17 @@ describe('parsePrinciples', () => {
     expect(result.footer).toBe(
       '원칙은 언제든 업데이트 가능! 동의되지 않는다면 바꾸자.'
     )
+  })
+
+  it('--- 이후 줄을 credits 배열로 파싱한다', () => {
+    const result = parsePrinciples(sampleMd)
+    expect(result.credits).toEqual(['콘티', '루멘', '라바'])
+  })
+
+  it('--- 섹션이 없으면 credits는 빈 배열이다', () => {
+    const mdWithoutCredits = `# 제목\n\n소제목\n\n1. 원칙\n\n> * 푸터\n`
+    const result = parsePrinciples(mdWithoutCredits)
+    expect(result.credits).toEqual([])
   })
 
   it('빈 줄과 추가 heading은 무시한다', () => {
