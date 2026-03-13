@@ -11,6 +11,7 @@ const mockData = {
   ],
   footer: '원칙은 언제든 업데이트 가능! 동의되지 않는다면 바꾸자.',
   credits: ['콘티', '루멘', '라바'],
+  revision: '0.0.1',
 }
 
 describe('ManifestoPage', () => {
@@ -21,7 +22,17 @@ describe('ManifestoPage', () => {
 
   it('"우아한테크코스 8기" 배지를 렌더링한다', () => {
     render(<ManifestoPage data={mockData} />)
-    expect(screen.getByText('우아한테크코스 8기')).toBeInTheDocument()
+    expect(screen.getByText(/우아한테크코스 8기/)).toBeInTheDocument()
+  })
+
+  it('revision이 있으면 배지에 ver 형식으로 표시한다', () => {
+    render(<ManifestoPage data={mockData} />)
+    expect(screen.getByText(/ver0\.0\.1/)).toBeInTheDocument()
+  })
+
+  it('revision이 없으면 배지에 버전을 표시하지 않는다', () => {
+    render(<ManifestoPage data={{ ...mockData, revision: '' }} />)
+    expect(screen.queryByText(/ver/)).not.toBeInTheDocument()
   })
 
   it('원칙 목록을 렌더링한다', () => {

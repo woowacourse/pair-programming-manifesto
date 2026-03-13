@@ -11,7 +11,9 @@ export default function ManifestoPage({ data }: Props) {
 
   return (
     <main className={styles.page}>
-      <div className={styles.badge}>우아한테크코스 8기</div>
+      <div className={styles.badge}>
+        우아한테크코스 8기{data.revision && ` · ver${data.revision}`}
+      </div>
       <h1 className={styles.title}>{data.title}</h1>
       <p className={styles.subtitle}>
         {subtitleLines.map((line, i) => (

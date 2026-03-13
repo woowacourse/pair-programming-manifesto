@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { parsePrinciples } from '../parsePrinciples'
 
-const sampleMd = `# 짝 프로그래밍 선언문
+const sampleMd = `<!-- revision: 0.0.1 -->
+# 짝 프로그래밍 선언문
 
 우리는 함께 자라기 위해 짝 프로그래밍을 하면서
 다음의 원칙들을 가치있게 여긴다.
@@ -55,6 +56,17 @@ describe('parsePrinciples', () => {
     const mdWithoutCredits = `# 제목\n\n소제목\n\n1. 원칙\n\n> * 푸터\n`
     const result = parsePrinciples(mdWithoutCredits)
     expect(result.credits).toEqual([])
+  })
+
+  it('HTML 주석에서 revision을 파싱한다', () => {
+    const result = parsePrinciples(sampleMd)
+    expect(result.revision).toBe('0.0.1')
+  })
+
+  it('revision 주석이 없으면 revision은 빈 문자열이다', () => {
+    const mdWithoutRevision = `# 제목\n\n소제목\n\n1. 원칙\n\n> * 푸터\n`
+    const result = parsePrinciples(mdWithoutRevision)
+    expect(result.revision).toBe('')
   })
 
   it('빈 줄과 추가 heading은 무시한다', () => {

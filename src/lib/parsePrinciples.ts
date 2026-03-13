@@ -4,6 +4,7 @@ export interface ManifestoData {
   principles: string[]
   footer: string
   credits: string[]
+  revision: string
 }
 
 export function parsePrinciples(content: string): ManifestoData {
@@ -14,6 +15,10 @@ export function parsePrinciples(content: string): ManifestoData {
   const principles: string[] = []
   let footer = ''
   let credits: string[] = []
+  let revision = ''
+
+  const revisionMatch = content.match(/<!--\s*revision:\s*([\w.]+)\s*-->/)
+  if (revisionMatch) revision = revisionMatch[1]
 
   let subtitleLines: string[] = []
   let inSubtitle = false
@@ -81,5 +86,5 @@ export function parsePrinciples(content: string): ManifestoData {
     subtitle = subtitleLines.join('\n')
   }
 
-  return { title, subtitle, principles, footer, credits }
+  return { title, subtitle, principles, footer, credits, revision }
 }
