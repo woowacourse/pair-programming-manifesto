@@ -2,7 +2,6 @@ import fs from 'fs'
 import path from 'path'
 import { parsePrinciples } from '@/lib/parsePrinciples'
 import ManifestoPage from '@/components/ManifestoPage/ManifestoPage'
-import Toolbar from '@/components/Toolbar/Toolbar'
 import styles from './page.module.css'
 
 export default function Page() {
@@ -14,7 +13,6 @@ export default function Page() {
 
   return (
     <div className={styles.container}>
-      <Toolbar />
       <ManifestoPage data={data} />
     </div>
   )

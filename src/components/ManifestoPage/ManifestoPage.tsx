@@ -1,4 +1,5 @@
 import type { ManifestoData } from '@/lib/parsePrinciples'
+import Toolbar from '@/components/Toolbar/Toolbar'
 import styles from './ManifestoPage.module.css'
 
 interface Props {
@@ -29,6 +30,7 @@ export default function ManifestoPage({ data }: Props) {
           </li>
         ))}
       </ol>
+      <Toolbar />
       <footer className={styles.footer}>
         <p>* {data.footer}</p>
       </footer>
