@@ -5,6 +5,20 @@
   padding-top: 20px;
   border-top: 1px solid #ddd;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+  .toolbar {
+    justify-content: stretch;
+  }
+
+  .toolbar > * {
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    min-width: 0;
+  }
 }
 
 .btn {

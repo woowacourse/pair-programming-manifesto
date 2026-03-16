@@ -10,6 +10,14 @@
   font-family: var(--font-baemin-hanna), sans-serif;
 }
 
+@media (max-width: 600px) {
+  .page {
+    padding: 32px 20px 40px;
+    min-height: unset;
+    box-shadow: none;
+  }
+}
+
 .badge {
   font-size: 14px;
   color: #333;
@@ -17,18 +25,20 @@
 }
 
 .title {
-  font-size: 56px;
+  font-size: clamp(32px, 8vw, 56px);
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -1px;
   margin-bottom: 24px;
+  word-break: keep-all;
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: clamp(15px, 3.5vw, 20px);
   font-weight: 700;
   line-height: 1.6;
   margin-bottom: 20px;
+  word-break: keep-all;
 }
 
 .divider {
@@ -45,9 +55,10 @@
 .principle {
   display: flex;
   gap: 10px;
-  font-size: 20px;
+  font-size: clamp(15px, 3.5vw, 20px);
   line-height: 1.7;
   margin-bottom: 12px;
+  word-break: keep-all;
 }
 
 .num {
@@ -60,6 +71,14 @@
   text-align: right;
   font-size: 13px;
   color: #666;
+  word-break: keep-all;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    text-align: left;
+    font-size: 12px;
+  }
 }
 
 .credits {
